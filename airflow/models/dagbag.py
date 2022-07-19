@@ -657,7 +657,7 @@ class DagBag(LoggingMixin):
                     return True
             return False
 
-        if dag.access_control or needs_perms(root_dag_id):
+        if dag.access_control or not needs_perms(root_dag_id):
             self.log.debug("Syncing DAG permissions: %s to the DB", root_dag_id)
             from airflow.www.security import ApplessAirflowSecurityManager
 
